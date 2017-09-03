@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+<FORM Name="myform">
+    <SELECT NAME="carType" onChange="calculatePrice()" id="carType">
+       <OPTION value="0">Select your vehicle</OPTION>
+       <OPTION value="90000">Mercedes</OPTION>
+       <OPTION value="80000">BMW</OPTION>
+       <OPTION value="60000">Range Rover</OPTION>
+       <OPTION value="50000">Jaguar</OPTION>
+       <OPTION value="40000">Land Rover</OPTION>
+       <OPTION value="30000">Subaru</OPTION>
+       <OPTION value="20000">Volvo</OPTION>
+       <OPTION value="10000">Toyota</OPTION>
+    </SELECT>
+
+
+    <SELECT NAME="collisionType" onChange="calculatePrice()" id="collisionType">
+       <OPTION value="0">Select Collision Factor</OPTION>
+       <OPTION value="50%">1</OPTION>
+       <OPTION value="40%">2</OPTION>
+       <OPTION value="30%">3</OPTION>
+       <OPTION value="20%">4</OPTION>
+       <OPTION value="10%">5</OPTION>
+    </SELECT>
+</FORM>
+
+The Total Collision Premium:<INPUT type="text" id="PicExtPrice" Size=8>
+
+<script type="text/javascript">
+  function calculatePrice(){
+
+      //Get selected data  
+      var elt = document.getElementById("carType");
+      var car = elt.options[elt.selectedIndex].value;
+
+      elt = document.getElementById("collisionType");
+      var collision = elt.options[elt.selectedIndex].value;
+
+      //convert data to integers
+      car = parseInt(car);
+      collision = parseInt(collision);
+
+      //calculate total value  
+      var total = car / collision; 
+
+      //print value to  PicExtPrice 
+      document.getElementById("PicExtPrice").value=total;
+
+ }
+</script>
+
+</body>
+</html>
